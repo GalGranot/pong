@@ -3,6 +3,7 @@ public class Ball : MonoBehaviour {
     public Rigidbody2D rb;
 
     void Start() {
+        //! FIXME: make this random/related to game
         rb.linearVelocity = new Vector2(5, 6);
     }
 
@@ -28,6 +29,8 @@ public class Ball : MonoBehaviour {
             FlipVertSpeed();
         } else if(collision.gameObject.CompareTag("RightWall")) {
             FlipHorzSpeed();
+        } else if(collision.gameObject.CompareTag("Paddle")) {
+            FlipHorzSpeed(); //! FIXME: change this to be based on position hit in paddle
         }
     }
 }
