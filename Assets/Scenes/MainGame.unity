@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 228621838}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   upper_vertical_border: 3.5
+  left_score_border: -8.7
   score: 0
   score_text: {fileID: 736731161}
 --- !u!4 &228621839
@@ -1519,5 +1520,5 @@ SceneRoots:
   - {fileID: 1830254515}
   - {fileID: 495808100}
   - {fileID: 1131657305}
-  - {fileID: 570407842}
   - {fileID: 1599073967}
+  - {fileID: 570407842}

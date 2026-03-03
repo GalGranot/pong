@@ -11,7 +11,9 @@ public class Ball : MonoBehaviour {
     }
 
     void Update() {
-
+        if(transform.position.x < gm.left_score_border) {
+            gm.MoveToGameOver();
+        }
     }
 
     void FlipVertSpeed() {
@@ -44,7 +46,6 @@ public class Ball : MonoBehaviour {
         } else if(collision.gameObject.CompareTag("RightWall")) {
             FlipHorzSpeed();
         } else if(collision.gameObject.CompareTag("Paddle")) {
-            // FlipHorzSpeed(); //! FIXME: change this to be based on position hit in paddle
             PaddleHit(collision.gameObject.transform.position.y);
             gm.UpdateScore();
         }
