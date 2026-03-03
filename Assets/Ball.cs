@@ -1,6 +1,7 @@
 using UnityEngine;
 public class Ball : MonoBehaviour {
     public Rigidbody2D rb;
+    public GameManager gm;
 
     void Start() {
         //! FIXME: make this random/related to game
@@ -31,6 +32,7 @@ public class Ball : MonoBehaviour {
             FlipHorzSpeed();
         } else if(collision.gameObject.CompareTag("Paddle")) {
             FlipHorzSpeed(); //! FIXME: change this to be based on position hit in paddle
+            gm.UpdateScore();
         }
     }
 }
