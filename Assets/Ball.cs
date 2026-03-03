@@ -1,3 +1,5 @@
+using System;
+using NUnit.Framework.Constraints;
 using UnityEngine;
 public class Ball : MonoBehaviour {
     public Rigidbody2D rb;
@@ -24,6 +26,17 @@ public class Ball : MonoBehaviour {
         rb.linearVelocity = v;
     }
 
+    void PaddleHit(float ypaddle) {
+        float yball = transform.position.y;
+        float offset = yball - ypaddle;
+        //! FIXME: add division by paddle size here
+        var v = rb.linearVelocity;
+        float magnitude = Mathf.Sqrt(v.x * v.x + v.y * v.y);
+        v.x = Mathf.Sign(v.x) * -1 * magnitude;
+        v.y += offset;
+        rb.linearVelocity = v;
+    }
+
     void OnCollisionEnter2D(Collision2D collision) {
         Debug.Log("ball collision");
         if(collision.gameObject.CompareTag("BorderWalls")) {
@@ -31,7 +44,8 @@ public class Ball : MonoBehaviour {
         } else if(collision.gameObject.CompareTag("RightWall")) {
             FlipHorzSpeed();
         } else if(collision.gameObject.CompareTag("Paddle")) {
-            FlipHorzSpeed(); //! FIXME: change this to be based on position hit in paddle
+            // FlipHorzSpeed(); //! FIXME: change this to be based on position hit in paddle
+            PaddleHit(collision.gameObject.transform.position.y);
             gm.UpdateScore();
         }
     }
