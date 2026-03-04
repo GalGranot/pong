@@ -3,10 +3,11 @@ using NUnit.Framework.Constraints;
 using UnityEngine;
 public class Ball : MonoBehaviour {
     public Rigidbody2D rb;
-    public GameManager gm;
+    GameManager gm;
 
     void Start() {
         //! FIXME: make this random/related to game
+        gm = GameManager.Instance;
         rb.linearVelocity = new Vector2(5, 6);
     }
 

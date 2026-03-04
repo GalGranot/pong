@@ -512,6 +512,7 @@ GameObject:
   - component: {fileID: 736731160}
   - component: {fileID: 736731162}
   - component: {fileID: 736731161}
+  - component: {fileID: 736731163}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -638,6 +639,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 736731159}
   m_CullTransparentMesh: 1
+--- !u!114 &736731163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736731159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f38c1bd06db9647c087b268c61b5d506, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &1131657300
 GameObject:
   m_ObjectHideFlags: 0
@@ -671,7 +684,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   rb: {fileID: 1131657303}
-  gm: {fileID: 228621838}
 --- !u!58 &1131657302
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1294,7 +1306,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PaddleCtrlr
   speed: 10
-  gm: {fileID: 228621838}
   down_key: 15
   up_key: 33
   rb: {fileID: 1830254519}

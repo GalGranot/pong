@@ -1,10 +1,8 @@
-using NUnit.Framework.Constraints;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Controls;
 public class PaddleCtrlr : MonoBehaviour {
     public float speed;
-    public GameManager gm;
+    GameManager gm;
     public Key down_key;
     public Key up_key;
     public Rigidbody2D rb;
@@ -12,7 +10,7 @@ public class PaddleCtrlr : MonoBehaviour {
     float move;
     
     void Start() {
-        // rb.bodyType = RigidbodyType2D.Kinematic;
+        gm = GameManager.Instance;
     }
 
     void OnValidate() {

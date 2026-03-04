@@ -1,13 +1,13 @@
 using TMPro;
-using Unity.VectorGraphics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 public class GameManager : MonoBehaviour {
     public float upper_vertical_border;
     public float left_score_border = -8.7f;
     public int score = 0;
     public TextMeshProUGUI score_text;
+
+    public static GameManager Instance;
 
     public void MoveToGameOver() {
         SceneManager.LoadScene("GameOver");
@@ -23,6 +23,11 @@ public class GameManager : MonoBehaviour {
     }
 
     void Awake() {
+        if(Instance != null && Instance != this) {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
         DontDestroyOnLoad(gameObject);
     }
 
@@ -40,7 +45,7 @@ public class GameManager : MonoBehaviour {
         UpdateScoreText();
     }
 
-    void UpdateScoreText() {
+    public void UpdateScoreText() {
         score_text.text = "Score: " + score.ToString();
     }
 }
