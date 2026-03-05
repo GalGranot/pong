@@ -1,51 +1,65 @@
-using TMPro;
+/*=============================================================================
+* Includes
+=============================================================================*/
 using UnityEngine;
+using TMPro;
 using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
-    public float upper_vertical_border;
-    public float left_score_border = -8.7f;
-    public int score = 0;
-    public TextMeshProUGUI score_text;
 
-    public static GameManager Instance;
+/*=============================================================================
+* Class Variables
+=============================================================================*/
+public float upper_vertical_border;
+public float left_score_border = -8.7f;
+public int score = 0;
+public TextMeshProUGUI score_text;
 
-    public void MoveToGameOver() {
-        SceneManager.LoadScene("GameOver");
+public static GameManager Instance;
+
+/*=============================================================================
+* Unity Callbacks 
+=============================================================================*/
+
+void Awake() {
+    if(Instance != null && Instance != this) {
+        Destroy(gameObject);
+        return;
     }
+    Instance = this;
+    DontDestroyOnLoad(gameObject);
+}
 
-    public void MoveToGame() {
-        score = 0;
-        SceneManager.LoadScene("MainGame");
-    }
+void Start() {
+    UpdateScoreText();
+}
 
-    void OnValidate() {
-        Debug.Assert(left_score_border < 0);
-    }
+// void Update() {
 
-    void Awake() {
-        if(Instance != null && Instance != this) {
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-    }
+// }
 
-    void Start() {
-        UpdateScoreText();
-    }
+void OnValidate() {
+    Debug.Assert(left_score_border < 0);
+}
 
+/*=============================================================================
+* Class Methods
+=============================================================================*/
+public void UpdateScore() {
+    score++;
+    UpdateScoreText();
+}
 
-    void Update() {
+public void UpdateScoreText() {
+    score_text.text = "Score: " + score.ToString();
+}
 
-    }
+public void MoveToGameOver() {
+    SceneManager.LoadScene("GameOver");
+}
 
-    public void UpdateScore() {
-        score++;
-        UpdateScoreText();
-    }
+public void MoveToGame() {
+    score = 0;
+    SceneManager.LoadScene("MainGame");
+}
 
-    public void UpdateScoreText() {
-        score_text.text = "Score: " + score.ToString();
-    }
 }

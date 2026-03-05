@@ -1,11 +1,38 @@
-using TMPro;
+/*=============================================================================
+* Includes
+=============================================================================*/
 using UnityEngine;
-
+using TMPro;
 public class ScoreText : MonoBehaviour {
-    GameManager gm;
-    void Start() {
-        gm = GameManager.Instance;
-        gm.score_text = GetComponent<TextMeshProUGUI>();
-        gm.UpdateScoreText();
-    }
+
+/*=============================================================================
+* Class Variables
+=============================================================================*/
+GameManager gm;
+
+/*=============================================================================
+* Unity Callbacks 
+=============================================================================*/
+void Awake() {
+    
+}
+
+void Start() {
+    gm = GameManager.Instance;
+    gm.score_text = GetComponent<TextMeshProUGUI>();
+    gm.UpdateScoreText();
+}
+
+// void Update() {
+
+// }
+
+void OnValidate() {
+
+}
+
+/*=============================================================================
+* Class Methods
+=============================================================================*/
+
 }

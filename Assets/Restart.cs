@@ -1,17 +1,40 @@
+/*=============================================================================
+* Includes
+=============================================================================*/
 using UnityEngine;
 public class Restart : MonoBehaviour {
-    GameManager gm;
-    void Start() {
-        gm = GameObject
-            .FindWithTag("GameManager")
-            .GetComponent<GameManager>();
-    }
 
-    void Update() {
+/*=============================================================================
+* Class Variables
+=============================================================================*/
+GameManager gm;
 
-    }
+/*=============================================================================
+* Unity Callbacks 
+=============================================================================*/
+void Awake() {
+    
+}
 
-    public void RestartGame() {
-        gm.MoveToGame();
-    }
+void Start() {
+    gm = GameObject
+        .FindWithTag("GameManager")
+        .GetComponent<GameManager>();
+}
+
+// void Update() {
+
+// }
+
+void OnValidate() {
+
+}
+
+/*=============================================================================
+* Class Methods
+=============================================================================*/
+public void RestartGame() {
+    gm.MoveToGame();
+}
+
 }

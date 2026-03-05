@@ -1,17 +1,40 @@
-using TMPro;
+/*=============================================================================
+* Includes
+=============================================================================*/
 using UnityEngine;
+using TMPro;
 public class GameOverText : MonoBehaviour {
-    public TextMeshProUGUI game_over_text;
-    GameManager gm;
-    void Start() {
-        gm = GameManager.Instance;
 
-        game_over_text = GetComponent<TextMeshProUGUI>();
-        int score = gm.score;
-        game_over_text.text = "Game over! Score: " + score;
-    }
+/*=============================================================================
+* Class Variables
+=============================================================================*/
+public TextMeshProUGUI game_over_text;
+GameManager gm;
 
-    void Update() {
+/*=============================================================================
+* Unity Callbacks 
+=============================================================================*/
+void Awake() {
+    
+}
 
-    }
+void Start() {
+    gm = GameManager.Instance;
+
+    game_over_text = GetComponent<TextMeshProUGUI>();
+    int score = gm.score;
+    game_over_text.text = "Game over! Score: " + score;
+}
+
+// void Update() {
+
+// }
+
+void OnValidate() {
+
+}
+
+/*=============================================================================
+* Class Methods
+=============================================================================*/
 }
