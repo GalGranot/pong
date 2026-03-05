@@ -4,6 +4,9 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Collections;
+using UnityEngine.UI;
+using System.Threading.Tasks;
 public class GameManager : MonoBehaviour {
 
 /*=============================================================================
@@ -12,14 +15,15 @@ public class GameManager : MonoBehaviour {
 public float upper_vertical_border;
 public float bottom_border = -4.2f;
 public int score = 0;
+
 public TextMeshProUGUI score_text;
+public TextMeshProUGUI countdown_text;
 
 public static GameManager Instance;
 
 /*=============================================================================
 * Unity Callbacks 
 =============================================================================*/
-
 void Awake() {
     if(Instance != null && Instance != this) {
         Destroy(gameObject);
@@ -30,7 +34,6 @@ void Awake() {
 }
 
 void Start() {
-    UpdateScoreText();
 }
 
 // void Update() {
@@ -57,9 +60,41 @@ public void MoveToGameOver() {
     SceneManager.LoadScene("GameOver");
 }
 
-public void MoveToGame() {
+public void MoveToBasicGame() {
     score = 0;
-    SceneManager.LoadScene("MainGame");
+    SceneManager.LoadScene("BasicGame");
+}
+
+public async Task DoCountdown() {
+    countdown_text.text = "Use A/S to move";
+    countdown_text.gameObject.SetActive(true);
+    await Task.Delay(3000);
+    countdown_text.text = "3";
+    await Task.Delay(1000);
+
+    countdown_text.text = "2";
+    await Task.Delay(1000);
+
+    countdown_text.text = "1";
+    await Task.Delay(1000);
+
+    countdown_text.text = "GO!";
+    await Task.Delay(500);
+    countdown_text.gameObject.SetActive(false);
+}
+
+public async void DisableMainMenuText() {
+    await AsyncDisableMainMenuText();
+    MoveToBasicGame();
+}
+
+public async Task AsyncDisableMainMenuText() {
+    var main_menu_text = GameObject.FindWithTag("MainMenuText");
+    if(main_menu_text is null) {
+        Debug.Log("Game manager could not find main menu text");
+    }
+    Destroy(main_menu_text);
+    await DoCountdown();
 }
 
 }

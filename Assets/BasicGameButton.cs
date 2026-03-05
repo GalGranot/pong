@@ -1,8 +1,9 @@
 /*=============================================================================
 * Includes
 =============================================================================*/
+using System.Threading.Tasks;
 using UnityEngine;
-public class Restart : MonoBehaviour {
+public class BasicGameButton : MonoBehaviour {
 
 /*=============================================================================
 * Class Variables
@@ -12,27 +13,27 @@ GameManager gm;
 /*=============================================================================
 * Unity Callbacks 
 =============================================================================*/
-void Awake() {
+// void Awake() {
     
-}
+// }
 
 void Start() {
     gm = GameManager.Instance;
 }
 
-// void Update() {
+// // void Update() {
+
+// // }
+
+// void OnValidate() {
 
 // }
-
-void OnValidate() {
-
-}
 
 /*=============================================================================
 * Class Methods
 =============================================================================*/
-public void RestartGame() {
-    gm.MoveToBasicGame();
+public void BasicGameButtonCallback() {
+    gm.DisableMainMenuText();
 }
 
 }

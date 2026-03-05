@@ -8,6 +8,8 @@ TagManager:
   - BorderWalls
   - RightWall
   - GameManager
+  - MainMenuText
+  - CountdownText
   layers:
   - Default
   - TransparentFX
