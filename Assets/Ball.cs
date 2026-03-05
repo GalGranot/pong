@@ -24,7 +24,7 @@ void Start() {
 }
 
 void Update() {
-    if(transform.position.x < gm.left_score_border) {
+    if(transform.position.y < gm.bottom_border) {
         gm.MoveToGameOver();
     }
 }
@@ -35,9 +35,9 @@ void OnValidate() {
 
 void OnCollisionEnter2D(Collision2D collision) {
     if(collision.gameObject.CompareTag("BorderWalls")) {
-        FlipVertSpeed();
-    } else if(collision.gameObject.CompareTag("RightWall")) {
         FlipHorzSpeed();
+    } else if(collision.gameObject.CompareTag("RightWall")) {
+        FlipVertSpeed();
     } else if(collision.gameObject.CompareTag("Paddle")) {
         PaddleHit(collision.gameObject.transform.position.y);
         gm.UpdateScore();
@@ -60,13 +60,15 @@ void FlipHorzSpeed() {
 }
 
 void PaddleHit(float ypaddle) {
+    Debug.Log("Ball hit paddle");
     float yball = transform.position.y;
     float offset = yball - ypaddle;
     //! FIXME: add division by paddle size here
     var v = rb.linearVelocity;
     float magnitude = Mathf.Sqrt(v.x * v.x + v.y * v.y);
-    v.x = Mathf.Sign(v.x) * -1 * magnitude;
-    v.y += offset;
+    v.y = Mathf.Sign(v.x) * -1 * magnitude;
+    v.x += offset;
     rb.linearVelocity = v;
 }
+
 }

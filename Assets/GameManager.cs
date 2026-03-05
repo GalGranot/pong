@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour {
 * Class Variables
 =============================================================================*/
 public float upper_vertical_border;
-public float left_score_border = -8.7f;
+public float bottom_border = -4.2f;
 public int score = 0;
 public TextMeshProUGUI score_text;
 
@@ -38,7 +38,7 @@ void Start() {
 // }
 
 void OnValidate() {
-    Debug.Assert(left_score_border < 0);
+    Debug.Assert(bottom_border < 0);
 }
 
 /*=============================================================================

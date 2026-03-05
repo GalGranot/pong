@@ -28,14 +28,18 @@ void Start() {
 }
 
 void Update() {
-    var y = transform.position.y;
+    // var y = transform.position.y;
     move = 0f;
-    if(Keyboard.current[up_key].isPressed) move += 1f;
-    if(Keyboard.current[down_key].isPressed) move -= 1f;
+    if(Keyboard.current.aKey.isPressed) {
+        move -= 1f;
+    }
+    if(Keyboard.current.sKey.isPressed) {
+        move += 1f;
+    }
 }
 
 void FixedUpdate() {
-    rb.MovePosition(rb.position + Vector2.up * speed * move * Time.fixedDeltaTime);
+    rb.MovePosition(rb.position + move * speed * Time.fixedDeltaTime * Vector2.right);
 }
 
 void OnCollisionEnter2D(Collision2D collision) {
