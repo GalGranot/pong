@@ -1,8 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class CountdownText : MonoBehaviour
-{
+public class CountdownText : MonoBehaviour {
     void Start() {
         GameManager
             .Instance
