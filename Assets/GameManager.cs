@@ -49,7 +49,9 @@ public class GameManager : MonoBehaviour {
         SceneManager.LoadScene("GameOver");
     }
 
-    public void MoveToBasicGame() {
+    public async void MoveToBasicGame() {
+        on_move_to_game?.Invoke();
+        await DoCountdown();
         score = 0;
         SceneManager.LoadScene("BasicGame");
     }
@@ -77,19 +79,18 @@ public class GameManager : MonoBehaviour {
         countdown_text.gameObject.SetActive(false);
     }
 
-    public async void DisableMainMenuText() {
-        on_move_to_game?.Invoke();
-        await DoCountdown();
-        MoveToBasicGame();
-    }
+    // public async void DisableMainMenuText() {
+    //     on_move_to_game?.Invoke();
+    //     await DoCountdown();
+    // }
 
-    public async Task AsyncDisableMainMenuText() {
-        var main_menu_text = GameObject.FindWithTag("MainMenuText");
-        if (main_menu_text is null) {
-            Debug.Log("Game manager could not find main menu text");
-        }
-        Destroy(main_menu_text);
-        await DoCountdown();
-    }
+    // public async Task AsyncDisableMainMenuText() {
+    //     var main_menu_text = GameObject.FindWithTag("MainMenuText");
+    //     if (main_menu_text is null) {
+    //         Debug.Log("Game manager could not find main menu text");
+    //     }
+    //     Destroy(main_menu_text);
+    //     await DoCountdown();
+    // }
 
 }

@@ -4,32 +4,16 @@ public class BasicGameButton : MonoBehaviour {
     /*=============================================================================
     * Class Variables
     =============================================================================*/
-    GameManager gm;
 
     /*=============================================================================
     * Unity Callbacks 
     =============================================================================*/
-    // void Awake() {
-
-    // }
-
-    void Start() {
-        gm = GameManager.Instance;
-    }
-
-    // // void Update() {
-
-    // // }
-
-    // void OnValidate() {
-
-    // }
 
     /*=============================================================================
     * Class Methods
     =============================================================================*/
     public void BasicGameButtonCallback() {
-        gm.DisableMainMenuText();
+        GameManager.Instance.MoveToBasicGame();
     }
 
 }
