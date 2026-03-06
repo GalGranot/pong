@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 public class Ball : MonoBehaviour {
 
@@ -6,6 +7,8 @@ public class Ball : MonoBehaviour {
     =============================================================================*/
     public Rigidbody2D rb;
     GameManager gm;
+
+    public static Action on_ball_paddle_collision;
 
     /*=============================================================================
     * Unity Callbacks 
@@ -39,7 +42,7 @@ public class Ball : MonoBehaviour {
         }
         else if (collision.gameObject.CompareTag("Paddle")) {
             PaddleHit(collision.gameObject.transform.position.y);
-            gm.UpdateScore();
+            on_ball_paddle_collision?.Invoke();
         }
     }
 

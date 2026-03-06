@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using System.Threading.Tasks;
+using System;
 public class GameManager : MonoBehaviour {
 
     /*=============================================================================
@@ -9,12 +10,12 @@ public class GameManager : MonoBehaviour {
     =============================================================================*/
     public float upper_vertical_border;
     public float bottom_border = -4.2f;
-    public int score = 0;
-
-    public TextMeshProUGUI score_text;
+    int score = 0;
+    public int Score => score;
     public TextMeshProUGUI countdown_text;
 
     public static GameManager Instance;
+    public static Action<int> on_score_change;
 
     /*=============================================================================
     * Unity Callbacks 
@@ -28,12 +29,8 @@ public class GameManager : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
     }
 
-    void Start() {
-    }
-
-    // void Update() {
-
-    // }
+    void OnEnable() => Ball.on_ball_paddle_collision += UpdateScore;
+    void OnDisable() => Ball.on_ball_paddle_collision -= UpdateScore;
 
     void OnValidate() {
         Debug.Assert(bottom_border < 0);
@@ -44,11 +41,7 @@ public class GameManager : MonoBehaviour {
     =============================================================================*/
     public void UpdateScore() {
         score++;
-        UpdateScoreText();
-    }
-
-    public void UpdateScoreText() {
-        score_text.text = "Score: " + score.ToString();
+        on_score_change?.Invoke(score);
     }
 
     public void MoveToGameOver() {

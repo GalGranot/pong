@@ -19,7 +19,7 @@ public class GameOverText : MonoBehaviour {
         gm = GameManager.Instance;
 
         game_over_text = GetComponent<TextMeshProUGUI>();
-        int score = gm.score;
+        int score = 7; //! FIXME: 
         game_over_text.text = "Game over! Score: " + score;
     }
 
