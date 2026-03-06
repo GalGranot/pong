@@ -5,7 +5,7 @@ public class Ball : MonoBehaviour {
     /*=============================================================================
     * Class Variables
     =============================================================================*/
-    public Rigidbody2D rb;
+    [SerializeField] Rigidbody2D rb;
     GameManager gm;
 
     public static Action on_ball_paddle_collision;
@@ -13,10 +13,6 @@ public class Ball : MonoBehaviour {
     /*=============================================================================
     * Unity Callbacks 
     =============================================================================*/
-    void Awake() {
-
-    }
-
     void Start() {
         //! FIXME: make this random/related to game
         gm = GameManager.Instance;
@@ -27,10 +23,6 @@ public class Ball : MonoBehaviour {
         if (transform.position.y < gm.bottom_border) {
             gm.MoveToGameOver();
         }
-    }
-
-    void OnValidate() {
-
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
@@ -62,7 +54,6 @@ public class Ball : MonoBehaviour {
     }
 
     void PaddleHit(float ypaddle) {
-        Debug.Log("Ball hit paddle");
         float yball = transform.position.y;
         float offset = yball - ypaddle;
         //! FIXME: add division by paddle size here

@@ -5,33 +5,20 @@ public class GameOverText : MonoBehaviour {
     /*=============================================================================
     * Class Variables
     =============================================================================*/
-    public TextMeshProUGUI game_over_text;
-    GameManager gm;
+    TextMeshProUGUI text;
 
     /*=============================================================================
     * Unity Callbacks 
     =============================================================================*/
-    void Awake() {
-
-    }
 
     void Start() {
-        gm = GameManager.Instance;
-
-        game_over_text = GetComponent<TextMeshProUGUI>();
-        int score = 7; //! FIXME: 
-        game_over_text.text = "Game over! Score: " + score;
-    }
-
-    // void Update() {
-
-    // }
-
-    void OnValidate() {
-
+        text = GetComponent<TextMeshProUGUI>();
+        int score = GameManager.Instance.Score;
+        text.text = $"Game over! Score: {score}";
     }
 
     /*=============================================================================
     * Class Methods
     =============================================================================*/
+
 }
