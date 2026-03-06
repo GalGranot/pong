@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager Instance;
     public static Action<int> on_score_change;
+    public static Action on_move_to_game;
 
     /*=============================================================================
     * Unity Callbacks 
@@ -77,7 +78,8 @@ public class GameManager : MonoBehaviour {
     }
 
     public async void DisableMainMenuText() {
-        await AsyncDisableMainMenuText();
+        on_move_to_game?.Invoke();
+        await DoCountdown();
         MoveToBasicGame();
     }
 
