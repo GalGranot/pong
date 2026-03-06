@@ -19,24 +19,26 @@ public class Ball : MonoBehaviour {
         rb.linearVelocity = new Vector2(5, 6);
     }
 
-    void Update() {
-        if (transform.position.y < gm.bottom_border) {
-            gm.MoveToGameOver();
-        }
-    }
-
     void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.CompareTag("BorderWalls")) {
+        var other = collision.gameObject;
+        if (other.CompareTag("BorderWalls")) {
             FlipHorzSpeed();
         }
-        else if (collision.gameObject.CompareTag("RightWall")) {
+        else if (other.CompareTag("RightWall")) {
             FlipVertSpeed();
         }
-        else if (collision.gameObject.CompareTag("Paddle")) {
+        else if (other.CompareTag("Paddle")) {
             PaddleHit(collision.gameObject.transform.position.y);
             on_ball_paddle_collision?.Invoke();
         }
     }
+
+    void OnTriggerEnter2D(Collider2D collision) {
+        if(collision.gameObject.CompareTag("DeadZone")) {
+            gm.MoveToGameOver();
+        }
+    }
+
 
     /*=============================================================================
     * Class Methods

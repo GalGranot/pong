@@ -7,8 +7,6 @@ public class GameManager : MonoBehaviour {
     /*=============================================================================
     * Class Variables
     =============================================================================*/
-    public float upper_vertical_border;
-    public float bottom_border = -4.2f;
     int score = 0;
     public int Score => score;
 
