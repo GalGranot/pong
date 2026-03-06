@@ -47,6 +47,13 @@ public class GameManager : MonoBehaviour {
         SceneManager.LoadScene("BasicGame");
     }
 
+    public async void MoveToGameWithPerks() {
+        on_move_to_game?.Invoke();
+        await DoCountdown();
+        score = 0;
+        SceneManager.LoadScene("GameWithPerks");
+    }
+
     public async void MoveToBasicGame() {
         on_move_to_game?.Invoke();
         await DoCountdown();
