@@ -30,10 +30,6 @@ public class GameManager : MonoBehaviour {
     void OnEnable() => Ball.on_ball_paddle_collision += UpdateScore;
     void OnDisable() => Ball.on_ball_paddle_collision -= UpdateScore;
 
-    void OnValidate() {
-        Debug.Assert(bottom_border < 0);
-    }
-
     /*=============================================================================
     * Class Methods
     =============================================================================*/
@@ -44,6 +40,11 @@ public class GameManager : MonoBehaviour {
 
     public void MoveToGameOver() {
         SceneManager.LoadScene("GameOver");
+    }
+
+    public void RestartGame() {
+        score = 0;
+        SceneManager.LoadScene("BasicGame");
     }
 
     public async void MoveToBasicGame() {
