@@ -11,6 +11,7 @@ TagManager:
   - MainMenuText
   - CountdownText
   - DeadZone
+  - PerkBox
   layers:
   - Default
   - TransparentFX
