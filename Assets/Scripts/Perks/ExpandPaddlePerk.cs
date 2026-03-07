@@ -16,6 +16,4 @@ public class ExpandPaddlePerk : Perk {
     public override void Apply(PaddleCtrlr paddle) {
         paddle.Expand(expand_amount);
     }
-
-    
 }
