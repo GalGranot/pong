@@ -1,3 +1,4 @@
+using NUnit.Framework.Constraints;
 using UnityEngine;
 using UnityEngine.InputSystem;
 public class PaddleCtrlr : MonoBehaviour {
@@ -16,10 +17,6 @@ public class PaddleCtrlr : MonoBehaviour {
     /*=============================================================================
     * Unity Callbacks 
     =============================================================================*/
-    void Awake() {
-
-    }
-
     void Start() {
         gm = GameManager.Instance;
     }
@@ -46,6 +43,16 @@ public class PaddleCtrlr : MonoBehaviour {
         //     float bounce_dir = transform.position.y > 0 ? -1f : 1f;
         //     rb.AddForce(transform.up * bounce_dir * bounce_strength);
         // }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision) {
+        if(!collision.gameObject.CompareTag("PerkBox")) {
+            Debug.LogWarning("unexpected collision with paddle");
+            return;
+        }
+        PerkBox perk_box = collision.gameObject.GetComponent<PerkBox>();
+        Debug.Log("found perk!");
+        Destroy(collision.gameObject);
     }
 
     void OnValidate() {
