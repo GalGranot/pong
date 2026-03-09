@@ -1,6 +1,7 @@
 using UnityEngine;
 
 public abstract class Perk : ScriptableObject {
-    public abstract void Apply(PaddleCtrlr paddle);
+    public string label;
+    public abstract void Apply(PerkCtx ctx);
 }
 

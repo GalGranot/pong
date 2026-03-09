@@ -8,7 +8,7 @@ public class Ball : MonoBehaviour {
     [SerializeField] Rigidbody2D rb;
     GameManager gm;
 
-    public static Action on_ball_paddle_collision;
+    public static Action<int> on_ball_paddle_collision;
 
     /*=============================================================================
     * Unity Callbacks 
@@ -29,7 +29,7 @@ public class Ball : MonoBehaviour {
         }
         else if (other.CompareTag("Paddle")) {
             PaddleHit(collision.gameObject.transform.position.y);
-            on_ball_paddle_collision?.Invoke();
+            on_ball_paddle_collision?.Invoke(1);
         }
     }
 

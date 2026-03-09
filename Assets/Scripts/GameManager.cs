@@ -33,8 +33,9 @@ public class GameManager : MonoBehaviour {
     /*=============================================================================
     * Class Methods
     =============================================================================*/
-    public void UpdateScore() {
-        score++;
+
+    public void UpdateScore(int up_score) {
+        score += up_score;
         on_score_change?.Invoke(score);
     }
 

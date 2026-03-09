@@ -13,7 +13,7 @@ public class ExpandPaddlePerk : Perk {
     }
 #endif
 
-    public override void Apply(PaddleCtrlr paddle) {
-        paddle.Expand(expand_amount);
+    public override void Apply(PerkCtx ctx) {
+        ctx.paddle.Expand(expand_amount);
     }
 }
