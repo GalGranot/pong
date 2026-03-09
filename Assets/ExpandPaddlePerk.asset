@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: ExpandPaddlePerk
   m_EditorClassIdentifier: Assembly-CSharp::ExpandPaddlePerk
   label: Expand!
-  expand_amount: 3
+  expand_amount: 1

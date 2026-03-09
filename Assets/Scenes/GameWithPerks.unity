@@ -804,7 +804,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1131657301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1126,7 +1126,7 @@ MonoBehaviour:
   perks_list:
   - {fileID: 11400000, guid: 566e82c977428494e888c6d858a58f7e, type: 2}
   - {fileID: 11400000, guid: 69a2f1efec3774731ab61153ad74b082, type: 2}
-  perk_spawn_rate_seconds: 1
+  perk_spawn_rate_seconds: 3
   perk_spawn_y: 1.17
   perk_spawn_x_min: -5.8
   perk_spawn_x_max: 5.8
