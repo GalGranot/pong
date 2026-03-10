@@ -15,15 +15,8 @@ public class GameManager : MonoBehaviour {
     public static Action on_move_to_game;
     public static Action<string> on_countdown_tick;
 
-    enum GameMode {
-        Basic,
-        WithPerks,
-    }
-
-    struct GameState {
-        GameMode mode;
-        string name;
-    }
+    string current_scene;
+    string previous_scene;
 
     /*=============================================================================
     * Unity Callbacks 
@@ -35,6 +28,9 @@ public class GameManager : MonoBehaviour {
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        current_scene = SceneManager.GetActiveScene().name;
+        print($"Game manager loaded in scene {current_scene}");
     }
 
     void OnEnable() => Ball.on_ball_paddle_collision += UpdateScore;
@@ -43,6 +39,12 @@ public class GameManager : MonoBehaviour {
     /*=============================================================================
     * Class Methods
     =============================================================================*/
+    void ChangeScene(string scene) {
+        print($"Game manager moving from scene {current_scene} to {scene}");
+        SceneManager.LoadScene(scene);
+        previous_scene = current_scene;
+        current_scene = scene;
+    }
 
     public void UpdateScore(int up_score) {
         score += up_score;
@@ -50,26 +52,26 @@ public class GameManager : MonoBehaviour {
     }
 
     public void MoveToGameOver() {
-        SceneManager.LoadScene("GameOver");
+        ChangeScene("GameOver");
     }
 
     public void RestartGame() {
         score = 0;
-        SceneManager.LoadScene("BasicGame");
+        ChangeScene(previous_scene);
     }
 
     public async void MoveToGameWithPerks() {
         on_move_to_game?.Invoke();
         await DoCountdown();
         score = 0;
-        SceneManager.LoadScene("GameWithPerks");
+        ChangeScene("GameWithPerks");
     }
 
     public async void MoveToBasicGame() {
         on_move_to_game?.Invoke();
         await DoCountdown();
         score = 0;
-        SceneManager.LoadScene("BasicGame");
+        ChangeScene("BasicGame");
     }
 
     public async Task DoCountdown() {
