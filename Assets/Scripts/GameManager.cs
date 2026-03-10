@@ -15,6 +15,16 @@ public class GameManager : MonoBehaviour {
     public static Action on_move_to_game;
     public static Action<string> on_countdown_tick;
 
+    enum GameMode {
+        Basic,
+        WithPerks,
+    }
+
+    struct GameState {
+        GameMode mode;
+        string name;
+    }
+
     /*=============================================================================
     * Unity Callbacks 
     =============================================================================*/
