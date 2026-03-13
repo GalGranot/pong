@@ -19,4 +19,10 @@ public class Paddle : MonoBehaviour {
         new_position.x = Math.Clamp(new_position.x, -x_bound, x_bound);
         rb.MovePosition(new_position);
     }
+
+    void OnTriggerEnter2D(Collider2D collision) {
+        if(collision.gameObject.CompareTag("Ball")) {
+            GameManager.Instance.IncrementScore();
+        }
+    }
 }
