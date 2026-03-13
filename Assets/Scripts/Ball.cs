@@ -14,22 +14,38 @@ public class Ball : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        rb.linearVelocity = Vector2.ClampMagnitude(rb.linearVelocity, max_velocity_magnitude);
-        if(MathF.Abs(rb.linearVelocity.y) < min_y_speed) {
-            var v = rb.linearVelocity;
-            v.y = min_y_speed * MathF.Sign(v.y);
-            rb.linearVelocity = v;
+        // rb.linearVelocity = Vector2.ClampMagnitude(rb.linearVelocity, max_velocity_magnitude);
+        // if(MathF.Abs(rb.linearVelocity.y) < min_y_speed) {
+        //     var v = rb.linearVelocity;
+        //     v.y = min_y_speed * MathF.Sign(v.y);
+        //     rb.linearVelocity = v;
+        // }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision) {
+        if(collision.gameObject.CompareTag("Paddle")) {
+            PaddleCollision(collision);
         }
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
-        GameObject other = collision.gameObject;
-        if(other.CompareTag("Paddle")) {
-            var v = rb.linearVelocity;
-            float hit_position = transform.position.y - other.transform.position.y; 
-            v.y *= hit_position * angle_factor;
-            v.x *= hit_position * angle_factor;
-            rb.linearVelocity = v;
+    }
+
+    void PaddleCollision(Collider2D collision) {
+        print($"collision, v = {rb.linearVelocity}"); 
+        var v = rb.linearVelocity;
+        if(v.y > 0) return;
+
+        float paddle_width = collision.GetComponent<Collider2D>().bounds.size.x;
+        float hit_offset = (transform.position.x - collision.transform.position.x) / (paddle_width / 2);
+        print($"hit offset = {hit_offset}");
+        if(
+            (v.x < 0 && hit_offset > 0) || // ball moving left and hit right of paddle
+            (v.x > 0 && hit_offset < 0) // ball moving right and hit left of paddle
+        ) {
+            v.x *= -1;
         }
+        v.y *= -1;
+        rb.linearVelocity = v.normalized * speed;
     }
 }
