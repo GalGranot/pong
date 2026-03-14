@@ -3921,7 +3921,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 0
 --- !u!114 &1080863791
 MonoBehaviour:
@@ -3938,6 +3938,8 @@ MonoBehaviour:
   perkbox_prefab: {fileID: 6439562865671051213, guid: 6e1b6cc720d854c2e8574cf41d0f54b3, type: 3}
   spawn_rate_secs: 3
   y_spawn: 2.78
+  perk_pool:
+  - {fileID: 11400000, guid: b1f9480a4ee254f56a326fa66f30a487, type: 2}
 --- !u!4 &1080863792
 Transform:
   m_ObjectHideFlags: 0

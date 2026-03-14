@@ -24,4 +24,9 @@ public class Paddle : MonoBehaviour {
             GameManager.Instance.IncrementScore();
         }
     }
+
+    public void AddSpeed(float bonus) {
+        print($"Adding {bonus} to paddle speed");
+        speed += bonus;
+    }
 }
