@@ -9,6 +9,7 @@ TagManager:
   - VerticalWalls
   - HorizontalWall
   - PerkBox
+  - DeadZone
   layers:
   - Default
   - TransparentFX
