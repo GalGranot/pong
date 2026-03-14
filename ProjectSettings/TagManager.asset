@@ -8,6 +8,7 @@ TagManager:
   - Ball
   - VerticalWalls
   - HorizontalWall
+  - PerkBox
   layers:
   - Default
   - TransparentFX
