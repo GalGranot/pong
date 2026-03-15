@@ -14,8 +14,12 @@ public class Ball : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D collision) {
-        if(collision.gameObject.CompareTag("Paddle")) {
+        var other = collision.gameObject;
+        if(other.CompareTag("Paddle")) {
             PaddleCollision(collision);
+        } else if(other.CompareTag("DeadZone")) {
+            print("ball hit dead zone");
+            GameManager.Instance.TriggerGameOver();
         }
     }
 

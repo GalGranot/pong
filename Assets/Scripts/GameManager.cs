@@ -4,13 +4,14 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
     enum GameState {
         MainMenu,
-        Game,
+        MainGame,
     }
     public static GameManager Instance;
     [SerializeField] GameState state = GameState.MainMenu;
     [SerializeField] uint score = 0;
 
     public static Action<uint> on_score_change;
+    public static Action on_game_over;
 
     void Awake() {
         if (Instance != null && Instance != this) {
@@ -26,12 +27,13 @@ public class GameManager : MonoBehaviour {
     }
 
     void EnterState(GameState next_state) {
+        print($"Entering state {next_state}");
         state = next_state;
         switch(state) {
         case GameState.MainMenu: 
             EnterMainMenu();
             break;
-        case GameState.Game:
+        case GameState.MainGame:
             EnterGame();
             break;
         default:
@@ -45,10 +47,11 @@ public class GameManager : MonoBehaviour {
     }
 
     public void EnterGameForButton() {
-        EnterState(GameState.Game);
+        EnterState(GameState.MainGame);
     }
 
     void EnterGame() {
+        print("would be cool to add a countdown here");
         SceneManager.LoadScene("MainGame");
     }
 
@@ -59,5 +62,9 @@ public class GameManager : MonoBehaviour {
 
     public void IncrementScore() {
         UpdateScore(score + 1);
+    }
+
+    public void TriggerGameOver() {
+        Time.timeScale = 0f;
     }
 }
