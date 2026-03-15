@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
     enum GameState {
         MainMenu,
@@ -8,8 +9,6 @@ public class GameManager : MonoBehaviour {
     public static GameManager Instance;
     [SerializeField] GameState state = GameState.MainMenu;
     [SerializeField] uint score = 0;
-    [SerializeField] GameObject[] main_menu_objects;
-    [SerializeField] GameObject[] play_objects;
 
     public static Action<uint> on_score_change;
 
@@ -50,12 +49,7 @@ public class GameManager : MonoBehaviour {
     }
 
     void EnterGame() {
-        foreach(var obj in main_menu_objects) {
-            obj.SetActive(false);
-        }
-        foreach(var obj in play_objects) {
-            obj.SetActive(true);
-        }
+        SceneManager.LoadScene("MainGame");
     }
 
     void UpdateScore(uint new_score) {
