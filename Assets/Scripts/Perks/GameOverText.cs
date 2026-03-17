@@ -1,6 +1,5 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 public class GameOverText : MonoBehaviour {
     static string[] text_options = {
         "Impressive. Truly. If the goal was losing.",

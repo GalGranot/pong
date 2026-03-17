@@ -865,15 +865,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   state: 0
   score: 0
-  main_menu_objects:
-  - {fileID: 683626916}
-  - {fileID: 710924829}
-  - {fileID: 403228940}
-  play_objects:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  game_over_objects: {fileID: 0}
 --- !u!4 &173169668
 Transform:
   m_ObjectHideFlags: 0
@@ -1105,7 +1097,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 2
 --- !u!114 &403228943
 MonoBehaviour:
   m_ObjectHideFlags: 0
