@@ -9,6 +9,6 @@ public class Ball : MonoBehaviour {
     }
 
     void OnValidate() {
-        if(init_x_speed <= 0f || init_y_speed <= 0f) Debug.LogError("initial ball speeds must be > 0");
+        if (init_x_speed <= 0f || init_y_speed <= 0f) Debug.LogError("initial ball speeds must be > 0");
     }
 }
