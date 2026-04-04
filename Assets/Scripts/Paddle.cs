@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 public class Paddle : MonoBehaviour {
     [SerializeField] Rigidbody2D rb;
     [SerializeField] float move_speed;
+    [SerializeField] float walls_abs_x_pos;
 
     enum Direction { Left, Right, None }
     Direction dir = Direction.None;
@@ -17,15 +19,14 @@ public class Paddle : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        if (Direction.None == dir) {
-            return;
-        }
-        int dir_sign = Direction.Right == dir ? 1 : -1;
         var pos = rb.position;
-        pos.x += move_speed * dir_sign;
+        if (Direction.None != dir) {
+            int dir_sign = Direction.Right == dir ? 1 : -1;
+            pos.x += move_speed * dir_sign;
+            dir = Direction.None;
+        }
+        pos.x = Mathf.Clamp(pos.x, -walls_abs_x_pos, walls_abs_x_pos);
         rb.MovePosition(pos);
-
-        dir = Direction.None;
     }
 
     //! FIXME rmv?
