@@ -10,11 +10,28 @@ public class Paddle : MonoBehaviour {
         return pos;
     }
 
+    void move_right() {
+        rb.MovePosition(after_move_position(1));
+    }
+
+    void move_left() {
+        rb.MovePosition(after_move_position(-1));
+    }
+
     void Update() {
         if(Keyboard.current.dKey.isPressed) {
-            rb.MovePosition(after_move_position(1));
+            move_right();
         } else if(Keyboard.current.aKey.isPressed) {
-            rb.MovePosition(after_move_position(-1));
+            move_left();
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision) {
+        GameObject other = collision.gameObject;
+        if(other.CompareTag("left wall")) {
+            move_right();
+        } else if(other.CompareTag("right wall")) {
+            move_left();
         }
     }
 
