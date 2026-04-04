@@ -4,26 +4,27 @@ public class Paddle : MonoBehaviour {
     [SerializeField] Rigidbody2D rb;
     [SerializeField] float move_speed;
 
-    Vector2 after_move_position(int dir) {
-        var pos = rb.position;
-        pos.x += move_speed * dir;
-        return pos;
-    }
-
-    void move_right() {
-        rb.MovePosition(after_move_position(1));
-    }
-
-    void move_left() {
-        rb.MovePosition(after_move_position(-1));
-    }
+    enum Direction { Left, Right, None }
+    Direction dir = Direction.None;
 
     void Update() {
         if(Keyboard.current.dKey.isPressed) {
-            move_right();
+            dir = Direction.Right;
         } else if(Keyboard.current.aKey.isPressed) {
-            move_left();
+            dir = Direction.Left;
         }
+    }
+
+    void FixedUpdate() {
+        if(dir == Direction.None) {
+            return;
+        }
+        int dir_sign = dir == Direction.Right ? 1 : -1;
+        var pos = rb.position;
+        pos.x += move_speed * dir_sign;
+        rb.MovePosition(pos);
+
+        dir = Direction.None;
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
