@@ -6,6 +6,7 @@ TagManager:
   tags:
   - left wall
   - right wall
+  - upper wall
   layers:
   - Default
   - TransparentFX

@@ -28,11 +28,6 @@ public class Paddle : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D collision) {
         GameObject other = collision.gameObject;
-        if(other.CompareTag("left wall")) {
-            move_right();
-        } else if(other.CompareTag("right wall")) {
-            move_left();
-        }
     }
 
     void OnValidate() {
