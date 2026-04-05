@@ -3,8 +3,8 @@ using UnityEngine;
 public class ScoreText : MonoBehaviour {
     [SerializeField] TextMeshProUGUI text;
 
-    void update_text() {
-        text.text = $"Score: {GameManager.instance.score}";
+    void update_text(uint score) {
+        text.text = $"Score: {score}";
     }
 
     void OnEnable() {

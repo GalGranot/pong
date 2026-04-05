@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour {
     [SerializeField] GameObject game_over_text;
     [SerializeField] GameObject restart_button;
 
-    public static event Action on_score_change;
+    public static event Action<uint> on_score_change;
     public static event Action on_game_over;
     public static event Action on_restart;
 
@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour {
 
     void change_score(uint new_score) {
         score = new_score;
-        on_score_change?.Invoke();
+        on_score_change?.Invoke(score);
     }
 
     void increment_score() => change_score(score + 1);
