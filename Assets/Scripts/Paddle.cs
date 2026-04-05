@@ -5,11 +5,14 @@ public class Paddle : MonoBehaviour {
     [SerializeField] Rigidbody2D rb;
     [SerializeField] float move_speed;
     [SerializeField] float walls_abs_x_pos;
+    Resettable resettable;
 
     enum Direction { Left, Right, None }
     Direction dir = Direction.None;
 
-    RigidbodyConstraints2D rb_constraints;
+    void Awake() {
+        resettable = GetComponent<Resettable>();
+    }
 
     void Update() {
         if (Keyboard.current.dKey.isPressed) {
@@ -37,21 +40,12 @@ public class Paddle : MonoBehaviour {
 
 
     void OnEnable() {
-        GameManager.on_game_over += freeze;
-        GameManager.on_restart += unfreeze;
+        GameManager.on_game_over += resettable.freeze;
+        GameManager.on_restart += resettable.reset_to_start;
     }
 
     void OnDisable() {
-        GameManager.on_game_over -= freeze;
-        GameManager.on_restart -= unfreeze;
-    }
-
-    void freeze() {
-        rb_constraints = rb.constraints;
-        rb.constraints = RigidbodyConstraints2D.FreezeAll;
-    }
-
-    void unfreeze() {
-        rb.constraints = rb_constraints;
+        GameManager.on_game_over -= resettable.freeze;
+        GameManager.on_restart -= resettable.reset_to_start;
     }
 }
