@@ -6,8 +6,7 @@ public class GameManager : MonoBehaviour {
     public uint score { get; private set; } = 0;
 
     [SerializeField] GameObject hud;
-    [SerializeField] GameObject game_over_text;
-    [SerializeField] GameObject restart_button;
+    [SerializeField] GameObject game_over_objects;
 
     public static event Action<uint> on_score_change;
     public static event Action on_game_over;
@@ -19,8 +18,7 @@ public class GameManager : MonoBehaviour {
 
     void Start() {
         hud.SetActive(true);
-        game_over_text.SetActive(false);
-        restart_button.SetActive(false);
+        game_over_objects.SetActive(false);
     }
 
     void OnEnable() {
@@ -33,16 +31,16 @@ public class GameManager : MonoBehaviour {
         Ball.on_out_of_bounds -= game_over;
     }
 
-    void change_score(uint new_score) {
+    void update_score(uint new_score) {
         score = new_score;
         on_score_change?.Invoke(score);
     }
 
-    void increment_score() => change_score(score + 1);
+    void increment_score() => update_score(score + 1);
 
     void game_over() {
-        game_over_text.SetActive(true);
-        restart_button.SetActive(true);
+        hud.SetActive(false);
+        game_over_objects.SetActive(true);
         on_game_over?.Invoke();
     }
 

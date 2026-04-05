@@ -31,11 +31,6 @@ public class Paddle : MonoBehaviour {
         rb.MovePosition(pos);
     }
 
-    //! FIXME rmv?
-    // void OnCollisionEnter2D(Collision2D collision) {
-    //     GameObject other = collision.gameObject;
-    // }
-
     void OnValidate() {
         if (move_speed <= 0f) Debug.LogError("Move speed must be > 0");
     }
