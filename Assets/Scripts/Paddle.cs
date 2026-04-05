@@ -9,6 +9,8 @@ public class Paddle : MonoBehaviour {
     enum Direction { Left, Right, None }
     Direction dir = Direction.None;
 
+    RigidbodyConstraints2D rb_constraints;
+
     void Update() {
         if (Keyboard.current.dKey.isPressed) {
             dir = Direction.Right;
@@ -36,5 +38,25 @@ public class Paddle : MonoBehaviour {
 
     void OnValidate() {
         if (move_speed <= 0f) Debug.LogError("Move speed must be > 0");
+    }
+
+
+    void OnEnable() {
+        GameManager.on_game_over += freeze;
+        GameManager.on_restart += unfreeze;
+    }
+
+    void OnDisable() {
+        GameManager.on_game_over -= freeze;
+        GameManager.on_restart -= unfreeze;
+    }
+
+    void freeze() {
+        rb_constraints = rb.constraints;
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+    }
+
+    void unfreeze() {
+        rb.constraints = rb_constraints;
     }
 }

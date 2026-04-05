@@ -8,6 +8,7 @@ TagManager:
   - right wall
   - upper wall
   - paddle
+  - bottom border
   layers:
   - Default
   - TransparentFX

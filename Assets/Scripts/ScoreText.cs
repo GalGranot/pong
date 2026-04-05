@@ -6,7 +6,7 @@ public class ScoreText : MonoBehaviour {
     void update_text() {
         text.text = $"Score: {GameManager.instance.score}";
     }
-    
+
     void OnEnable() {
         GameManager.on_score_change += update_text;
     }
