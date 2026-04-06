@@ -245,7 +245,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.3008213}
+  m_Offset: {x: -0.04949969, y: -0.3008213}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -255,7 +255,7 @@ BoxCollider2D:
     drawMode: 2
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 16.909992}
+  m_Size: {x: 0.7030016, y: 16.909992}
   m_EdgeRadius: 0
 --- !u!1 &199129461
 GameObject:
@@ -361,7 +361,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.23397112}
+  m_Offset: {x: -0.032999516, y: -0.23397112}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -371,7 +371,7 @@ BoxCollider2D:
     drawMode: 2
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 10.024579}
+  m_Size: {x: 0.736001, y: 10.024579}
   m_EdgeRadius: 0
 --- !u!212 &229755392
 SpriteRenderer:
@@ -2091,7 +2091,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.2841072}
+  m_Offset: {x: -0.044243813, y: -0.2841072}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2101,7 +2101,7 @@ BoxCollider2D:
     drawMode: 2
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 9.991154}
+  m_Size: {x: 0.68626976, y: 9.991154}
   m_EdgeRadius: 0
 --- !u!1 &1611574284
 GameObject:
@@ -2383,17 +2383,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.011924744, y: 0.0047766045}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2, y: 0.5}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.9983923, y: 0.5032096}
   m_EdgeRadius: 0
 --- !u!50 &1787165324
 Rigidbody2D:
@@ -2486,7 +2486,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d13061d6bb1ec4cadb7ada82f4a0e1dd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2505,8 +2505,8 @@ Transform:
   m_GameObject: {fileID: 1787165322}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.707, y: -3.0169, z: 0}
-  m_LocalScale: {x: 3.1702375, y: 0.21254376, z: 0.5871449}
+  m_LocalPosition: {x: 0.8326, y: -2.9855, z: 0}
+  m_LocalScale: {x: 1.1256, y: 1.1256, z: 1.1256}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2089297160}
