@@ -1810,8 +1810,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   rb: {fileID: 1588114432}
-  init_vx: 7
-  init_vy: 10
+  init_min_vx: -10
+  init_max_vx: 10
+  init_min_vy: 8
+  init_max_vy: 10
 --- !u!50 &1588114432
 Rigidbody2D:
   serializedVersion: 5
@@ -1962,9 +1964,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Resettable
   constraints: 0
-  init_vx: 7
-  init_vy: 10
-  has_initial_velocity: 1
 --- !u!1 &1598021649
 GameObject:
   m_ObjectHideFlags: 0
@@ -2524,9 +2523,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Resettable
   constraints: 0
-  init_vx: 0
-  init_vy: 0
-  has_initial_velocity: 0
 --- !u!1 &1788531982
 GameObject:
   m_ObjectHideFlags: 0
