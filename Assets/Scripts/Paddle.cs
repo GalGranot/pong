@@ -27,6 +27,8 @@ public class Paddle : MonoBehaviour {
         var pos = rb.position;
         if (Direction.None != dir) {
             int dir_sign = Direction.Right == dir ? 1 : -1;
+            //! FIXME: Add something like this:
+            //! FIXME: rb.position * move * speed * Time.fixedDeltaTime * Vector2.right;
             pos.x += move_speed * dir_sign;
             dir = Direction.None;
         }
